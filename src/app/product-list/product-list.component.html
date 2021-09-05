@@ -1,0 +1,39 @@
+<div class="spinner-wrapper d-flex align-items-center justify-content-center" *ngIf="showLoader">
+  <div class="spinner-border text-secondary" role="status"></div>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" (click)="sortColumn('id')">
+        <div class="d-flex align-items-center">
+          Id
+          <span class="icon-sort ml-2"></span>
+        </div>
+      </th>
+      <th scope="col" (click)="sortColumn('size')">
+        <div class="d-flex align-items-center">
+          Size
+          <span class="icon-sort ml-2"></span>
+        </div>
+      </th>
+      <th scope="col" (click)="sortColumn('price')">
+        <div class="d-flex align-items-center">
+          Price
+          <span class="icon-sort ml-2"></span>
+        </div>
+      </th>
+      <th scope="col">Face</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let productList of productList;;trackBy: trackBy; let index = index">
+      <td>{{ productList.id }}</td>
+      <td>{{ productList.size }}</td>
+      <td>{{ productList.price | currency }}</td>
+      <td>{{ productList.face }}</td>
+      <td>{{ productList.date | dateAgo }}</td>
+    </tr>
+    <tr *ngIf="showMesage" class="text-center"> End of Catalogue..</tr>
+  </tbody>
+</table>
